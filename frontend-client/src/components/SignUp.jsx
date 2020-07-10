@@ -36,6 +36,7 @@ class SignUp extends React.Component {
         const { jwt } = await response.json();
         localStorage.setItem("token", jwt);
         this.props.history.push("/");
+        window.location.reload();
       }
     } catch (err) {
       console.log(err.message);
@@ -45,11 +46,11 @@ class SignUp extends React.Component {
   render() {
     const { email, password } = this.state;
     return (
-      <div className="form-container">
-        <form onSubmit={this.onFormSubmit}>
-        <h1>Sign Up</h1>
+      <div className="form-container" style={{height:"82vh"}}>
+        <form className="loginform" onSubmit={this.onFormSubmit}>
+        <h1 className="login-h1">Sign Up</h1>
         <br/>
-          <label htmlFor="email">Email Address:</label>
+          <label className="login-label" htmlFor="email">Email Address:</label>
           <input
             type="email"
             name="email"
@@ -57,7 +58,7 @@ class SignUp extends React.Component {
             value={email}
             onChange={this.onInputChange}
           />
-          <label htmlFor="password">Password:</label>
+          <label className="login-label" htmlFor="password">Password:</label>
           <input
             type="password"
             name="password"
